@@ -22,7 +22,8 @@ def predict():
 
     file = request.files["image"]
 
-    img = Image.open(file).resize((224, 224))
+    # img = Image.open(file).resize((224, 224))
+    img = Image.open(file).convert("RGB").resize((224, 224))
     img_array = np.array(img)
     img_array = np.expand_dims(img_array, axis=0)
     img_array = preprocess_input(img_array)
@@ -42,5 +43,6 @@ def predict():
 import os
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 6000))
+    # port = int(os.environ.get("PORT", 6000))
+    port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
