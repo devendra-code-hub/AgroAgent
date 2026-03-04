@@ -9,8 +9,8 @@ app = Flask(__name__)
 
 # Load model once at startup
 # model = tf.keras.models.load_model("crop_disease_model_final.h5")
-model = tf.keras.models.load_model("crop_model.keras")
-
+# model = tf.keras.models.load_model("crop_model.keras")
+model = tf.keras.models.load_model("crop_model.keras", compile=False)
 # Load labels
 with open("labels.json", "r") as f:
     labels = json.load(f)
